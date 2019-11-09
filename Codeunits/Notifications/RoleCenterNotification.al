@@ -1,4 +1,4 @@
-codeunit 73060000 RoleCenterNotification
+codeunit 50110 RoleCenterNotification
 {
     trigger OnRun();
     begin

@@ -1,27 +1,27 @@
-table 78537 "Auto Increment Entry"
+table 50149 "Auto Increment Entry"
 {
 
-  fields
-  {
-    field(1;"Entry No.";Integer)
+    fields
     {
-      AutoIncrement=true;
+        field(1; "Entry No."; Integer)
+        {
+            AutoIncrement = true;
+        }
+        field(2; Description; Text[30])
+        {
+        }
     }
-    field(2;Description;Text[30])
-    {
-    }
-  }
 
-  keys
-  {
-    key(Key1;"Entry No.")
+    keys
     {
-      Clustered=true;
+        key(Key1; "Entry No.")
+        {
+            Clustered = true;
+        }
     }
-  }
 
-  fieldgroups
-  {
-  }
+    fieldgroups
+    {
+    }
 }
 

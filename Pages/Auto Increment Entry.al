@@ -1,26 +1,26 @@
-page 78537 "Auto Increment Entry"
+page 50149 "Auto Increment Entry"
 {
-  PageType=List;
-  SourceTable="Auto Increment Entry";
+    PageType = List;
+    SourceTable = "Auto Increment Entry";
 
-  layout
-  {
-    area(content)
+    layout
     {
-      repeater(Group)
-      {
-        field("Entry No.";"Entry No.")
+        area(content)
         {
+            repeater(Group)
+            {
+                field("Entry No."; "Entry No.")
+                {
+                }
+                field(Description; Description)
+                {
+                }
+            }
         }
-        field(Description;Description)
-        {
-        }
-      }
     }
-  }
 
-  actions
-  {
-  }
+    actions
+    {
+    }
 }
 

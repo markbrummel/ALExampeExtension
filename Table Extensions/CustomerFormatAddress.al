@@ -1,8 +1,8 @@
-tableextension 51234 CustomerFormatAddress extends Customer
+tableextension 50018 CustomerFormatAddress extends Customer
 {
-    procedure FormatAddress(VAR AddrArray : ARRAY [8] OF Text[90]);
+    procedure FormatAddress(VAR AddrArray: ARRAY[8] OF Text[90]);
     var
-        FormAddr : Codeunit "Format Address";
+        FormAddr: Codeunit "Format Address";
     begin
         FormAddr.Customer(AddrArray, Rec);
     end;

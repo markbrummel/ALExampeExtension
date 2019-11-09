@@ -1,4 +1,4 @@
-codeunit 72060000 "Example-Post With Events"
+codeunit 50100 "Example-Post With Events"
 {
   // version Exercise 4
 
