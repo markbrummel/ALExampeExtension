@@ -9,4 +9,20 @@ codeunit 50100 "Example Enabled"
             InitSetupRecord;
     end;
 
+    procedure GetExampleEnabled(): Boolean
+    var
+        ExampleSetup: Record "Example Setup";
+        UserSetup: Record "User Setup";
+    begin
+        if UserSetup.get(UserId) then begin
+            if UserSetup."Example Enabled" then
+                exit(true);
+        end;
+        with ExampleSetup do begin
+            Get;
+            exit("Example Enabled");
+        end;
+    end;
+
+
 }
