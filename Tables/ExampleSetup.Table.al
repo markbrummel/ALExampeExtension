@@ -5,6 +5,9 @@ table 50000 "Example Setup"
     {
         field(1; "Primary Key"; Code[10]) { CaptionML = ENU = 'Primary Key'; }
         field(2; "Example Enabled"; Boolean) { CaptionML = ENU = 'Example Enabled'; }
+        field(10; "Example Person Nos."; Code[10]) { TableRelation = "No. Series"; }
+        field(20; "Example Product Nos."; Code[10]) { TableRelation = "No. Series"; }
+
     }
 
     keys

@@ -15,6 +15,8 @@ page 50000 "Example Setup"
             {
                 CaptionML = ENU = 'General';
                 field("Example Enabled"; "Example Enabled") { }
+                field("Example Person Nos."; "Example Person Nos.") { }
+                field("Example Product Nos."; "Example Product Nos.") { }
             }
         }
     }
