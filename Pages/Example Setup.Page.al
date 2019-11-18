@@ -1,9 +1,11 @@
 page 50000 "Example Setup"
 {
     PageType = Card;
-    SourceTable = ExampleSetup;
+    SourceTable = "Example Setup";
     DeleteAllowed = false;
     InsertAllowed = false;
+    ApplicationArea = All;
+    UsageCategory = Administration;
 
     layout
     {
@@ -11,18 +13,16 @@ page 50000 "Example Setup"
         {
             group(General)
             {
-                CaptionML=ENU='General';
-                field("Example Enabled";"Example Enabled")
-                {
-                    
-                }
+                CaptionML = ENU = 'General';
+                field("Example Enabled"; "Example Enabled") { }
             }
         }
     }
 
-  trigger OnOpenPage();
-  begin
-      InitSetupRecord;
-  end;
+
+    trigger OnOpenPage();
+    begin
+        InitSetupRecord;
+    end;
 
 }

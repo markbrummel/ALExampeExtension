@@ -1,4 +1,4 @@
-table 50000 ExampleSetup
+table 50000 "Example Setup"
 {
 
     fields
