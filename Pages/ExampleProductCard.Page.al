@@ -15,7 +15,7 @@ page 50020 "Example Product Card"
                 {
                     ApplicationArea = All;
 
-                    trigger OnValidate();
+                    trigger OnAssistEdit();
                     begin
                         IF AssistEdit THEN
                             CurrPage.UPDATE;
