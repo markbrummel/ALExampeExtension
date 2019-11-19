@@ -1,6 +1,7 @@
-table 50010 "Example Person"
+table 50020 "Example Product"
 {
-    Caption = 'Example Person';
+
+    Caption = 'Example Product';
 
     fields
     {
@@ -12,80 +13,37 @@ table 50010 "Example Person"
             begin
                 IF "No." <> xRec."No." THEN BEGIN
                     ExampleSetup.GET;
-                    NoSeriesMgt.TestManual(ExampleSetup."Example Person Nos.");
+                    NoSeriesMgt.TestManual(ExampleSetup."Example Product Nos.");
                     "No. Series" := '';
                 END;
             end;
         }
-        field(2; Name; Text[50])
+        field(3; Description; Text[50])
         {
-            CaptionML = ENU = 'Name';
+            CaptionML = ENU = 'Description';
 
             trigger OnValidate();
             begin
-                IF ("Search Name" = UPPERCASE(xRec.Name)) OR ("Search Name" = '') THEN
-                    "Search Name" := Name;
+                IF ("Search Description" = UPPERCASE(xRec.Description)) OR ("Search Description" = '') THEN
+                    "Search Description" := Description;
             end;
         }
-        field(3; "Search Name"; Code[50])
+        field(4; "Search Description"; Code[50])
         {
-            CaptionML = ENU = 'Search Name';
+            CaptionML = ENU = 'Search Description';
         }
-        field(4; "Name 2"; Text[50])
+        field(5; "Description 2"; Text[50])
         {
-            CaptionML = ENU = 'Name 2';
+            CaptionML = ENU = 'Description 2';
         }
-        field(5; Address; Text[50])
+        field(8; "Sales Price"; Decimal)
         {
-            CaptionML = ENU = 'Address';
         }
-        field(6; "Address 2"; Text[50])
-        {
-            CaptionML = ENU = 'Address 2';
-        }
-        field(7; City; Text[30])
-        {
-            CaptionML = ENU = 'City';
-
-            trigger OnValidate();
-            begin
-                PostCode.ValidateCity(City, "Post Code", County, "Country/Region Code", (CurrFieldNo <> 0) AND GUIALLOWED);
-            end;
-        }
-        field(8; Contact; Text[50])
-        {
-            CaptionML = ENU = 'Contact';
-        }
-        field(9; "Phone No."; Text[30])
-        {
-            CaptionML = ENU = 'Phone No.';
-            ExtendedDatatype = PhoneNo;
-        }
-        field(35; "Country/Region Code"; Code[10])
-        {
-            CaptionML = ENU = 'Country/Region Code';
-            TableRelation = "Country/Region";
-        }
-        field(39; Blocked; Option)
+        field(54; Blocked; Boolean)
         {
             CaptionML = ENU = 'Blocked';
-            OptionCaptionML = ENU = ' ,Ship,Invoice,All';
-            OptionMembers = " ",Ship,Invoice,All;
         }
-        field(91; "Post Code"; Code[20])
-        {
-            CaptionML = ENU = 'Post Code';
-
-            trigger OnValidate();
-            begin
-                PostCode.ValidatePostCode(City, "Post Code", County, "Country/Region Code", (CurrFieldNo <> 0) AND GUIALLOWED);
-            end;
-        }
-        field(92; County; Text[30])
-        {
-            CaptionML = ENU = 'County';
-        }
-        field(107; "No. Series"; Code[10])
+        field(97; "No. Series"; Code[10])
         {
             CaptionML = ENU = 'No. Series';
             Editable = false;
@@ -106,45 +64,34 @@ table 50010 "Example Person"
     }
 
     trigger OnInsert();
-    var
-        ExampleDocumentNoVisibility: Codeunit ExampleDocumentNoVisibility;
     begin
-        IF "No." = '' THEN
-            IF ExampleDocumentNoVisibility.ExamplePersonNoSeriesIsDefault THEN BEGIN
-                ExampleSetup.GET;
-                ExampleSetup.TESTFIELD("Example Person Nos.");
-                NoSeriesMgt.InitSeries(ExampleSetup."Example Person Nos.", xRec."No. Series", 0D, "No.", "No. Series");
-            END;
+        IF "No." = '' THEN BEGIN
+            ExampleSetup.GET;
+            ExampleSetup.TESTFIELD("Example Product Nos.");
+            NoSeriesMgt.InitSeries(ExampleSetup."Example Product Nos.", xRec."No. Series", 0D, "No.", "No. Series");
+        END;
     end;
 
     var
         ExampleSetup: Record "Example Setup";
-        PostCode: Record 225;
-        NoSeriesMgt: Codeunit 396;
+        NoSeriesMgt: Codeunit NoSeriesManagement;
 
-    PROCEDURE AssistEdit(OldExamplePerson: Record "Example Person"): Boolean;
-    var
-        ExamplePerson: Record "Example Person";
+    PROCEDURE AssistEdit(): Boolean;
     begin
-        WITH ExamplePerson DO BEGIN
-            ExamplePerson := Rec;
-            ExampleSetup.GET;
-            ExampleSetup.TESTFIELD("Example Person Nos.");
-            IF NoSeriesMgt.SelectSeries(ExampleSetup."Example Person Nos.", OldExamplePerson."No. Series", "No. Series") THEN BEGIN
-                NoSeriesMgt.SetSeries("No.");
-                Rec := ExamplePerson;
-                EXIT(TRUE);
-            END;
+        ExampleSetup.GET;
+        ExampleSetup.TESTFIELD("Example Product Nos.");
+        IF NoSeriesMgt.SelectSeries(ExampleSetup."Example Product Nos.", xRec."No. Series", "No. Series") THEN BEGIN
+            NoSeriesMgt.SetSeries("No.");
+            EXIT(TRUE);
         END;
     end;
 
-    PROCEDURE FormatAddress(VAR AddrArray: ARRAY[8] OF Text[90]);
+    PROCEDURE GetSalesPrice(PersonNo: Code[20]): Decimal;
     var
-        FormatAddress: Codeunit 365;
+        ExampleProductPriceMgt: Codeunit 50020;
     begin
-        WITH FormatAddress DO
-            FormatAddr(AddrArray, Name, "Name 2", Contact, Address, "Address 2", City, "Post Code", County, "Country/Region Code")
+        WITH ExampleProductPriceMgt DO
+            EXIT(GetSalesPrice(Rec, PersonNo));
     end;
-
 }
 
