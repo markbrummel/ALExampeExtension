@@ -1,7 +1,5 @@
 page 50020 "Example Product Card"
 {
-    // version Exercise 2
-
     PageType = Card;
     SourceTable = "Example Product";
 
