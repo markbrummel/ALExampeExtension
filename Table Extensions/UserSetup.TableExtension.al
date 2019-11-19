@@ -1,4 +1,4 @@
-tableextension 50100 "My User Setup" extends "User Setup"
+tableextension 50100 "Example User Setup" extends "User Setup"
 {
     fields
     {

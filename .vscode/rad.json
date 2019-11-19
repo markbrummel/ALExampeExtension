@@ -1,1 +1,1 @@
-﻿{"Added":[{"Id":50100,"Kind":11,"Name":"Example Enabled","PackagePath":"/src/Codeunits/ExampleEnabled.Codeunit.al"},{"Id":50100,"Kind":17,"Name":"My User Setup","PackagePath":"/src/Table%20Extensions/UserSetup.TableExtension.al"}],"Modified":[{"Id":50000,"Kind":10,"Name":"Example Setup","PackagePath":"/src/Tables/ExampleSetup.Table.al"},{"Id":50000,"Kind":12,"Name":"Example Setup","PackagePath":"/src/Pages/Example%20Setup.Page.al"}],"Removed":[]}
+﻿{"Added":[],"Modified":[],"Removed":[]}

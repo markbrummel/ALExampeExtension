@@ -11,7 +11,7 @@
             "startupObjectId": 22,
             "startupObjectType": "Page",
             "breakOnError": true,
-            "launchBrowser": true,
+            "launchBrowser": false,
             "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true
         }

@@ -3,7 +3,7 @@ table 50000 "Example Setup"
 
     fields
     {
-        field(1; "Primary Key"; Code[10]) { CaptionML = ENU = 'Primary Key'; }
+        field(1; "Primary Key"; Code[1]) { CaptionML = ENU = 'Primary Key'; }
         field(2; "Example Enabled"; Boolean) { CaptionML = ENU = 'Example Enabled'; }
 
     }
@@ -18,7 +18,7 @@ table 50000 "Example Setup"
 
     procedure InitSetupRecord();
     begin
-        If not get then begin
+        If not Get then begin
             Init;
             Insert;
         end;

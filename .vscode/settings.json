@@ -1,0 +1,5 @@
+{
+    "al.codeAnalyzers": ["${CodeCop}","${PerTenantExtensionCop}","${UICop}"],
+    "al.enableCodeAnalysis": false
+
+}

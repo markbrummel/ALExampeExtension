@@ -1,5 +1,6 @@
 page 50000 "Example Setup"
 {
+    Caption = 'Example Setup';
     PageType = Card;
     SourceTable = "Example Setup";
     DeleteAllowed = false;
@@ -14,7 +15,7 @@ page 50000 "Example Setup"
             group(General)
             {
                 CaptionML = ENU = 'General';
-                field("Example Enabled"; "Example Enabled") { }
+                field("Example Enabled"; "Example Enabled") { ApplicationArea = All; }
             }
         }
     }
