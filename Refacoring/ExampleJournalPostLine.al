@@ -14,12 +14,12 @@ codeunit 50122 "Example Jnl.-Post Line"
     end;
 
     var
-        ExReg: Record 50015;
+        ExReg: Record "Example Register";
         NextEntryNo: Integer;
 
-    LOCAL PROCEDURE TestNear(ExJnlLine: Record 50013): Boolean;
+    LOCAL PROCEDURE TestNear(ExJnlLine: Record "Ex. Journal Line"): Boolean;
     var
-        ExJnlCheckLine: Codeunit 50002;
+        ExJnlCheckLine: Codeunit "Ex. Jnl.-Check Line";
     begin
         WITH ExJnlLine DO
             IF EmptyLine THEN
@@ -37,12 +37,12 @@ codeunit 50122 "Example Jnl.-Post Line"
 
     LOCAL PROCEDURE IsolateTransactionAndFindLastEntryNumber();
     var
-        ExLedgEntry: Record 50011;
+        ExampleEntry: Record "Example Entry";
     begin
         IF NextEntryNo = 0 THEN BEGIN
-            ExLedgEntry.LOCKTABLE;
-            IF ExLedgEntry.FINDLAST THEN
-                NextEntryNo := ExLedgEntry."Entry No.";
+            ExampleEntry.LOCKTABLE;
+            IF ExampleEntry.FINDLAST THEN
+                NextEntryNo := ExampleEntry."Entry No.";
             NextEntryNo := NextEntryNo + 1;
         END;
     end;
@@ -67,39 +67,39 @@ codeunit 50122 "Example Jnl.-Post Line"
         ExReg.MODIFY;
     end;
 
-    LOCAL PROCEDURE CreateEntry(VAR ExJnlLine: Record 50013);
+    LOCAL PROCEDURE CreateEntry(VAR ExJnlLine: Record "Ex. Journal Line");
     var
-        ExLedgEntry: Record 50011;
+        ExampleEntry: Record "Example Entry";
     begin
         WITH ExJnlLine DO BEGIN
             IF "Document Date" = 0D THEN
                 "Document Date" := "Posting Date";
 
-            ExLedgEntry.INIT;
-            ExLedgEntry."Entry Type" := "Entry Type";
-            ExLedgEntry."Document No." := "Document No.";
-            ExLedgEntry."Posting Date" := "Posting Date";
-            ExLedgEntry."Document Date" := "Document Date";
-            ExLedgEntry."Example Person No." := "Example Person No.";
-            ExLedgEntry."Example Product No." := "Example Product No.";
-            ExLedgEntry.Description := Description;
-            ExLedgEntry.Quantity := Quantity;
-            ExLedgEntry."Global Dimension 1 Code" := "Shortcut Dimension 1 Code";
-            ExLedgEntry."Global Dimension 2 Code" := "Shortcut Dimension 2 Code";
-            ExLedgEntry."Dimension Set ID" := "Dimension Set ID";
-            ExLedgEntry."Source Code" := "Source Code";
-            ExLedgEntry."Journal Batch Name" := "Journal Batch Name";
-            ExLedgEntry."Reason Code" := "Reason Code";
-            ExLedgEntry."Gen. Bus. Posting Group" := "Gen. Bus. Posting Group";
-            ExLedgEntry."Gen. Prod. Posting Group" := "Gen. Prod. Posting Group";
-            ExLedgEntry."No. Series" := "Posting No. Series";
+            ExampleEntry.INIT;
+            ExampleEntry."Entry Type" := "Entry Type";
+            ExampleEntry."Document No." := "Document No.";
+            ExampleEntry."Posting Date" := "Posting Date";
+            ExampleEntry."Document Date" := "Document Date";
+            ExampleEntry."Example Person No." := "Example Person No.";
+            ExampleEntry."Example Product No." := "Example Product No.";
+            ExampleEntry.Description := Description;
+            ExampleEntry.Quantity := Quantity;
+            ExampleEntry."Global Dimension 1 Code" := "Shortcut Dimension 1 Code";
+            ExampleEntry."Global Dimension 2 Code" := "Shortcut Dimension 2 Code";
+            ExampleEntry."Dimension Set ID" := "Dimension Set ID";
+            ExampleEntry."Source Code" := "Source Code";
+            ExampleEntry."Journal Batch Name" := "Journal Batch Name";
+            ExampleEntry."Reason Code" := "Reason Code";
+            ExampleEntry."Gen. Bus. Posting Group" := "Gen. Bus. Posting Group";
+            ExampleEntry."Gen. Prod. Posting Group" := "Gen. Prod. Posting Group";
+            ExampleEntry."No. Series" := "Posting No. Series";
 
-            IF ExLedgEntry."Entry Type" = ExLedgEntry."Entry Type"::Sale THEN
-                ExLedgEntry.Quantity := -ExLedgEntry.Quantity;
-            ExLedgEntry."User ID" := USERID;
-            ExLedgEntry."Entry No." := NextEntryNo;
+            IF ExampleEntry."Entry Type" = ExampleEntry."Entry Type"::Sale THEN
+                ExampleEntry.Quantity := -ExampleEntry.Quantity;
+            ExampleEntry."User ID" := USERID;
+            ExampleEntry."Entry No." := NextEntryNo;
 
-            ExLedgEntry.INSERT;
+            ExampleEntry.INSERT;
 
             NextEntryNo := NextEntryNo + 1;
         END;

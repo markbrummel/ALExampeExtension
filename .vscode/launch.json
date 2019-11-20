@@ -8,10 +8,10 @@
             "server": "http://localhost",
             "serverInstance": "BC150",
             "authentication": "Windows",
-            "startupObjectId": 22,
+            "startupObjectId": 50149,
             "startupObjectType": "Page",
             "breakOnError": true,
-            "launchBrowser": false,
+            "launchBrowser": true,
             "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true,
             "schemaUpdateMode": "Recreate"
