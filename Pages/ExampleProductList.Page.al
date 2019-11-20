@@ -29,12 +29,10 @@ page 50021 "Example Product List"
             systempart(Links; Links)
             {
                 ApplicationArea = All;
-                Visible = true;
             }
             systempart(Notes; Notes)
             {
                 ApplicationArea = All;
-                Visible = true;
             }
         }
     }

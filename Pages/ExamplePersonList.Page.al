@@ -1,6 +1,6 @@
 page 50011 "Example Person List"
 {
-    Caption = 'Example Master Data List';
+    Caption = 'Example Person List';
     CardPageID = "Example Person Card";
     Editable = false;
     PageType = List;
